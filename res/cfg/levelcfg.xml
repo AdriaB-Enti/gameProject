@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<levels>
+	<difficulty mode="Easy">
+		<cellMult>5</cellMult>
+		<timeMult>4</timeMult>
+		<snakeMult>1</snakeMult>
+		<foodMult>1</foodMult>
+		<foodIncrem>1</foodIncrem>
+	</difficulty>
+	<difficulty mode="Medium">
+		<cellMult>2</cellMult>
+		<timeMult>2</timeMult>
+		<snakeMult>2</snakeMult>
+		<foodMult>2</foodMult>
+		<foodIncrem>2</foodIncrem>
+	</difficulty>
+	<difficulty mode="Hard">
+		<cellMult>1</cellMult>
+		<timeMult>1</timeMult>
+		<snakeMult>3</snakeMult>
+		<foodMult>3</foodMult>
+		<foodIncrem>4</foodIncrem>
+	</difficulty>
+   <level numb="1">
+	<k>3</k>
+	<x>5</x>
+   </level>
+</levels>
