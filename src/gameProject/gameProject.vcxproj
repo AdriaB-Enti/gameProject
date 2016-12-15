@@ -119,6 +119,7 @@
   <ItemGroup>
     <ClInclude Include="Button.h" />
     <ClInclude Include="Engine.h" />
+    <ClInclude Include="main.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Window.h" />

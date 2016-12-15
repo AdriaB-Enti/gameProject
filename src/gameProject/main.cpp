@@ -7,6 +7,10 @@
 #include <iostream>
 #include "Button.h"
 
+
+#include "Engine.h";
+
+
 const int WIDTH{ 640 }, HEIGHT{ 480 };
 int multipliers[5];
 
@@ -66,6 +70,11 @@ void changeScene(std::string difficulty) {
 }
 
 int main(int, char*[]) {
+
+	GameEngine engine = GameEngine();
+
+	//engine.run();
+
 	using namespace std::string_literals; // Enables to use an array of characters with an "s" at the end as an string literal
 	try {
 		init();

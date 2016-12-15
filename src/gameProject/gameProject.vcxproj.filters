@@ -47,5 +47,8 @@
     <ClInclude Include="Window.h">
       <Filter>Source Files\View</Filter>
     </ClInclude>
+    <ClInclude Include="main.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
