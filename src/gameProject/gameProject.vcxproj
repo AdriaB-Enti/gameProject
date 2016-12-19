@@ -114,15 +114,35 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="GameScene.cc" />
+    <ClCompile Include="Grid.cc" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MenuScene.cc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Assert.hh" />
     <ClInclude Include="Button.h" />
+    <ClInclude Include="Color.hh" />
     <ClInclude Include="Engine.h" />
+    <ClInclude Include="GameEngine.hh" />
+    <ClInclude Include="GameScene.hh" />
+    <ClInclude Include="Grid.hh" />
+    <ClInclude Include="GUI.hh" />
+    <ClInclude Include="ID.hh" />
+    <ClInclude Include="InputManager.hh" />
+    <ClInclude Include="IOManager.hh" />
+    <ClInclude Include="Logger.hh" />
     <ClInclude Include="main.h" />
-    <ClInclude Include="Renderer.h" />
-    <ClInclude Include="Scene.h" />
-    <ClInclude Include="Window.h" />
+    <ClInclude Include="MenuScene.hh" />
+    <ClInclude Include="Renderer.hh" />
+    <ClInclude Include="Resource.hh" />
+    <ClInclude Include="Scene.hh" />
+    <ClInclude Include="SceneManager.hh" />
+    <ClInclude Include="Sprite.hh" />
+    <ClInclude Include="System.hh" />
+    <ClInclude Include="TimeManager.hh" />
+    <ClInclude Include="Transform.hh" />
+    <ClInclude Include="Window.hh" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
