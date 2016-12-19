@@ -90,7 +90,7 @@ int main(int, char*[]) {
 		if (renderer == nullptr) throw "Unable to initialize the SDL_Renderer"s;
 
 		// --- SPRITES ---
-		SDL_Texture *bgTexture{ IMG_LoadTexture(renderer, "../../res/gfx/background.jpg") };
+		SDL_Texture *bgTexture{ IMG_LoadTexture(renderer, "../../res/gfx/background.png") };
 		SDL_Rect bgRect{ 0, 0, WIDTH, HEIGHT };
 		SDL_Texture *spritesheet{ IMG_LoadTexture(renderer, "../../res/gfx/snake_spritesheet.jpg") };
 		SDL_Rect spRect{ 0, 0, 75, 50 };
