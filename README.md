@@ -10,7 +10,7 @@ Per fer funcionar el projecte cal afegir la carpeta "dll" i "lib".
 
 Coses a fer:
 
-- ID - Inicialitzar els valors nous
+- ID - Inicialitzar els valors nous --FET
 - Game engine.hh - Escriure la definicio de les variables (Fonts, imatges, etc) - Noves escenes 
 - Main - Run
 - Grid.cc - Fer de nou -> Moure la serp, apareixe les fruites, destruir coses. 
