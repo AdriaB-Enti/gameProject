@@ -33,10 +33,10 @@ void MenuScene::Draw(void)
 
 	GUI::DrawTextShaded<FontID::CANDY>("Play",
 	{ W.GetWidth() >> 1, int(W.GetHeight()*.1f), 1, 1 },
-	{ 190, 0, 160 }, { 50, 200, 230 }); // Render score that will be different when updated
+	{ 190, 0, 160 }, { 50, 200, 230 });
 	GUI::DrawTextShaded<FontID::CANDY>("Exit",
-	{ W.GetWidth() >> 1, int(W.GetHeight()*.1f), 1, 1 },
-	{ 190, 0, 160 }, { 50, 200, 230 }); // Render score that will be different when updated
+	{ W.GetWidth() >> 1, int(W.GetHeight()*.8f), 1, 1 },
+	{ 190, 0, 160 }, { 50, 200, 230 });
 
 										//std::string &&msg, Transform &&transform, Color &&foregroundColor, Color &&backgroundColor
 
