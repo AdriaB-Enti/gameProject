@@ -1,4 +1,5 @@
 //Adria Biarnes & Sergi Sin
+//Github Link: https://github.com/AdriaB-Enti/gameProject
 #include <string>		// Needed to process error messages
 #include <SDL.h>		// Always needs to be included for an SDL app
 #include <SDL_ttf.h>	// Used for loading fonts and rendering text
@@ -155,5 +156,6 @@ int main(int, char*[]) {
 	//TTF_Quit();
 	//IMG_Quit();
 	//SDL_Quit();
+
 	return 0;
 }

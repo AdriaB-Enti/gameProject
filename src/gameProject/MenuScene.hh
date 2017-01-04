@@ -3,7 +3,7 @@
 
 #include "Grid.hh"
 #include "Scene.hh"
-
+#include "Button.h"
 
 class  MenuScene : public Scene
 {
@@ -16,9 +16,8 @@ public:
 	void Draw(void) override;
 
 private:
-
+	Button play, exit;
 	Sprite m_background;
-
 
 };
 

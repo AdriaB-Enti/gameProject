@@ -19,5 +19,8 @@ public:
 	static void DrawTextShaded(std::string &&msg, Transform &&transform, Color &&foregroundColor, Color &&backgroundColor) {
 		R.Push(TTF_RenderText_Shaded(R.GetFont<fontID>(), msg.c_str(), foregroundColor(), backgroundColor()), transform);
 	}
-
+	template<FontID fontID>
+	static void DrawButton(std::string &&msg, Transform transform, Color foregroundColor, Color backgroundColor) {
+		R.Push(TTF_RenderText_Shaded(R.GetFont<fontID>(), msg.c_str(), foregroundColor(), backgroundColor()), transform);
+	}
 };
