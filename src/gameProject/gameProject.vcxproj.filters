@@ -35,6 +35,9 @@
     <ClCompile Include="MenuScene.cc">
       <Filter>Source Files\Model</Filter>
     </ClCompile>
+    <ClCompile Include="SnakeScene.cc">
+      <Filter>Source Files\Model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Button.h">
@@ -102,6 +105,9 @@
     </ClInclude>
     <ClInclude Include="main.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SnakeScene.hh">
+      <Filter>Source Files\Model</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

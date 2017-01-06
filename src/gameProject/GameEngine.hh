@@ -4,7 +4,7 @@
 
 #pragma region GAME_SCENES
 #include "MenuScene.hh"
-#include "GameScene.hh"
+#include "SnakeScene.hh"
 #pragma endregion TODO
 
 
@@ -29,7 +29,7 @@ namespace GameEngine {
 	//! Adds the game scenes into the Scene Manager and decides which is the first screen
 	void AddScenes(void) {
 		SM.AddScene<MenuScene>();
-		//SM.AddScene<GameScene>();
+		SM.AddScene<SnakeScene>();
 		SM.SetCurScene<MenuScene>();
 
 	}

@@ -118,6 +118,7 @@
     <ClCompile Include="Grid.cc" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MenuScene.cc" />
+    <ClCompile Include="SnakeScene.cc" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Assert.hh" />
@@ -137,6 +138,7 @@
     <ClInclude Include="Resource.hh" />
     <ClInclude Include="Scene.hh" />
     <ClInclude Include="SceneManager.hh" />
+    <ClInclude Include="SnakeScene.hh" />
     <ClInclude Include="Sprite.hh" />
     <ClInclude Include="System.hh" />
     <ClInclude Include="TimeManager.hh" />
