@@ -18,12 +18,12 @@ MenuScene::~MenuScene()
 
 void MenuScene::OnEntry(void)
 {
-	std::cout << "ENTRY";
+
 }
 
 void MenuScene::OnExit(void)
 {
-	std::cout << "EXIT SCENE";
+
 }
 
 void MenuScene::Update(void)

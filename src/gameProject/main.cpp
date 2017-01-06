@@ -1,4 +1,4 @@
-//Adria Biarnes & Sergi Sin
+//Adria Biarnes & Sergi Sin - 2nB
 //Github Link: https://github.com/AdriaB-Enti/gameProject
 #include <string>		// Needed to process error messages
 #include <SDL.h>		// Always needs to be included for an SDL app

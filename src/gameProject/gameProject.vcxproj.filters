@@ -37,9 +37,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Engine.h">
-      <Filter>Source Files\Controller</Filter>
-    </ClInclude>
     <ClInclude Include="Button.h">
       <Filter>Source Files\Model</Filter>
     </ClInclude>

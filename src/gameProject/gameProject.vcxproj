@@ -123,7 +123,6 @@
     <ClInclude Include="Assert.hh" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Color.hh" />
-    <ClInclude Include="Engine.h" />
     <ClInclude Include="GameEngine.hh" />
     <ClInclude Include="GameScene.hh" />
     <ClInclude Include="Grid.hh" />
