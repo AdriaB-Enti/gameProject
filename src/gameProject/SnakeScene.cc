@@ -24,3 +24,7 @@ void SnakeScene::Update(void)
 void SnakeScene::Draw(void)
 {
 }
+
+void SnakeScene::setDifficulty(difficulty newDif)
+{
+}

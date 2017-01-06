@@ -109,5 +109,11 @@
     <ClInclude Include="SnakeScene.hh">
       <Filter>Source Files\Model</Filter>
     </ClInclude>
+    <ClInclude Include="SnakeGrid.hh">
+      <Filter>Source Files\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Snake.hh">
+      <Filter>Source Files\Model</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

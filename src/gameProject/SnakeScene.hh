@@ -2,6 +2,13 @@
 #pragma once
 #include "Scene.hh"
 
+enum class difficulty
+{
+	easy,
+	medium,
+	hard
+};
+
 // gameplay scene
 class SnakeScene : public Scene {
 public:
@@ -11,6 +18,8 @@ public:
 	void OnExit(void) override;
 	void Update(void) override;
 	void Draw(void) override;
+	void setDifficulty(difficulty newDif);
 private:
-
+	//playing state -> joc en marxa o joc parat (amb el menu in-game)
+	static difficulty selectedDif;					//selected difficulty
 };

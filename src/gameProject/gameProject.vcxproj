@@ -138,6 +138,8 @@
     <ClInclude Include="Resource.hh" />
     <ClInclude Include="Scene.hh" />
     <ClInclude Include="SceneManager.hh" />
+    <ClInclude Include="Snake.hh" />
+    <ClInclude Include="SnakeGrid.hh" />
     <ClInclude Include="SnakeScene.hh" />
     <ClInclude Include="Sprite.hh" />
     <ClInclude Include="System.hh" />

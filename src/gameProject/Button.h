@@ -8,7 +8,7 @@ struct Button
 	Transform transform;
 	Color  frontColor = { 0, 150, 0 }, backColor= { 50, 200, 230 };
 	Sint32 width=0, height=0;
-	char* text="";		//memory leak? ...
+	char* text="";
 	bool isActive = true;
 
 	void init(char* newText, Transform newTransform) {
@@ -29,5 +29,9 @@ struct Button
 		if (isActive) {
 			GUI::DrawButton<FontID::CANDY>(text, transform, frontColor, backColor);
 		}
+	}
+
+	~Button() {
+		
 	}
 };
