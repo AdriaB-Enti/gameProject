@@ -1,7 +1,6 @@
 #pragma once
-#include "SnakeGrid.hh"
 #include <deque>
-
+#include <SDL.h>
 
 struct Cell
 {

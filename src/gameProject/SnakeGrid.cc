@@ -1,5 +1,6 @@
+#pragma once
 #include "SnakeGrid.hh"
-
+#include "Snake.hh"
 
 
 SnakeGrid::SnakeGrid(Sint32 nrows, Sint32 ncols) : snake({ 1,1 })
