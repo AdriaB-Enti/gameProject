@@ -4,7 +4,8 @@
 
 difficulty SnakeScene::selectedDif = difficulty::easy;
 
-SnakeScene::SnakeScene(void) {
+SnakeScene::SnakeScene(void):snakegrid(20, 20, 20, 20){
+
 }
 
 SnakeScene::~SnakeScene()
@@ -21,10 +22,12 @@ void SnakeScene::OnExit(void)
 
 void SnakeScene::Update(void)
 {
+	snakegrid.Update();
 }
 
 void SnakeScene::Draw(void)
 {
+	snakegrid.Draw();
 }
 
 void SnakeScene::setDifficulty(const difficulty d)

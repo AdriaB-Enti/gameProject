@@ -1,6 +1,7 @@
 
 #pragma once
 #include "Scene.hh"
+#include "SnakeGrid.hh"
 
 enum class difficulty
 {
@@ -22,5 +23,5 @@ public:
 private:
 	//playing state -> joc en marxa o joc parat (amb el menu in-game)
 	static difficulty selectedDif;					//selected difficulty
-	
+	SnakeGrid snakegrid;
 };

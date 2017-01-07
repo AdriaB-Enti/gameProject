@@ -4,20 +4,12 @@
 
 Snake::Snake(snakeCell newHead)
 {
-	cells.push_front(newHead);
-	//decidir que fer amb la resta de caselles (tail i demés possibles caselles)...
-	movDirection = directions::right;
-	growing = false;
-
-}
-
-Snake::Snake(snakeCell newHead, directions movingDirection)
-{
-	startingCell = newHead;
-	startingDir = movingDirection;
-	cells.push_front(newHead);
-	//decidir que fer amb la resta de caselles (tail i demés possibles caselles)...
-	movDirection = directions::right;
+	cells.push_front(newHead);			//head
+	movDirection = directions::down;	//snake starts moving downwards by default
+	newHead.y--;
+	cells.push_back(newHead);			//body
+	newHead.y--;
+	cells.push_back(newHead);			//tail
 	growing = false;
 }
 
@@ -44,10 +36,6 @@ void Snake::growUp()
 void Snake::setDirection(directions newDir)
 {
 	movDirection = newDir;
-}
-
-void Snake::reset()
-{
 }
 
 snakeCell Snake::getHead() {
@@ -80,4 +68,14 @@ snakeCell Snake::nextPosition() {
 	}
 
 	return nextPos;
+}
+
+//auto Snake::getIterator()		//for iterating all snake cells
+//{
+//	return cells.begin;
+//}
+
+int Snake::getSize()			//snake size (including head and tail cells)
+{
+	return cells.size();
 }
