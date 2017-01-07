@@ -38,6 +38,12 @@
     <ClCompile Include="SnakeScene.cc">
       <Filter>Source Files\Model</Filter>
     </ClCompile>
+    <ClCompile Include="SnakeGrid.cc">
+      <Filter>Source Files\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Snake.cc">
+      <Filter>Source Files\Model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Button.h">

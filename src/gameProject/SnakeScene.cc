@@ -2,6 +2,8 @@
 #include "SnakeScene.hh"
 #include "MenuScene.hh"
 
+difficulty SnakeScene::selectedDif = difficulty::easy;
+
 SnakeScene::SnakeScene(void) {
 }
 
@@ -25,6 +27,9 @@ void SnakeScene::Draw(void)
 {
 }
 
-void SnakeScene::setDifficulty(difficulty newDif)
+void SnakeScene::setDifficulty(const difficulty d)
 {
+	SnakeScene::selectedDif = d;
 }
+
+

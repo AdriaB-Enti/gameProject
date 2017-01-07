@@ -6,7 +6,7 @@
 class SnakeGrid
 {
 public:
-	SnakeGrid();
+	SnakeGrid(Sint32 nrows, Sint32 ncols);
 	~SnakeGrid();
 	void Update();
 	void Draw();
@@ -20,11 +20,3 @@ private:
 	//estructura de dades per els obstacles?
 	Snake snake;
 };
-
-SnakeGrid::SnakeGrid()
-{
-}
-
-SnakeGrid::~SnakeGrid()
-{
-}

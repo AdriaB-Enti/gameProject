@@ -118,6 +118,8 @@
     <ClCompile Include="Grid.cc" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MenuScene.cc" />
+    <ClCompile Include="Snake.cc" />
+    <ClCompile Include="SnakeGrid.cc" />
     <ClCompile Include="SnakeScene.cc" />
   </ItemGroup>
   <ItemGroup>

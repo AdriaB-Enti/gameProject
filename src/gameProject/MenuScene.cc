@@ -14,7 +14,6 @@ MenuScene::MenuScene(void)
 	easy.init("Easy", { W.GetWidth()/8, W.GetHeight()>>1, 1, 1 });
 	medium.init("Medium", { 4*W.GetWidth()/8, W.GetHeight()>>1, 1, 1 });
 	hard.init("Hard", { 7*W.GetWidth()/8, W.GetHeight()>>1, 1, 1 });
-	std::cout << "Menu es construeix\n";
 }
 
 MenuScene::~MenuScene()
@@ -43,16 +42,19 @@ void MenuScene::Update(void)
 			SetState<SceneState::EXIT>();
 		}
 		if (easy.isInside(mouseCoords.x, mouseCoords.y)) {
+			SnakeScene::setDifficulty(difficulty::easy);
 			SM.SetCurScene<SnakeScene>(); //load snake scene
-			std::cout << "Loading..." << std::endl;
+			std::cout << "Loading Easy..." << std::endl;
 		}
 		if (medium.isInside(mouseCoords.x, mouseCoords.y)) {
+			SnakeScene::setDifficulty(difficulty::medium);
 			SM.SetCurScene<SnakeScene>(); //load snake scene
-			std::cout << "Loading..." << std::endl;
+			std::cout << "Loading Medium..." << std::endl;
 		}
 		if (hard.isInside(mouseCoords.x, mouseCoords.y)) {
+			SnakeScene::setDifficulty(difficulty::hard);
 			SM.SetCurScene<SnakeScene>();	//load snake scene
-			std::cout << "Loading..." << std::endl;
+			std::cout << "Loading Hard..." << std::endl;
 		}
 	}
 
