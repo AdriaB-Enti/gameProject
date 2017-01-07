@@ -2,7 +2,7 @@
 #include <deque>
 #include <SDL.h>
 
-struct Cell
+struct snakeCell
 {
 	Sint32 x;
 	Sint32 y;
@@ -11,10 +11,6 @@ struct Cell
 class Snake
 {
 public:
-	Snake(Cell newHead);
-	~Snake();
-	void Update();
-	void growUp();							//when the snake eats an apple and grows up
 	enum class directions
 	{
 		up,
@@ -22,15 +18,22 @@ public:
 		left,
 		right
 	};
+	Snake(snakeCell newHead);
+	Snake(snakeCell newHead, directions movingDirection);
+	~Snake();
+	void Update();
+	void growUp();							//when the snake eats an apple and grows up
 	void setDirection(directions newDir);
 	void reset();
-	Cell getHead();							//returns the snake's head cell			------ (usar els metodes front() i back() del deque
-	Cell getTail();							//returns the snake's tail cell (the last cell)
-	Cell nextPosition();					//where the head it's going to be after moving
+	snakeCell getHead();							//returns the snake's head cell			------ (usar els metodes front() i back() del deque
+	snakeCell getTail();							//returns the snake's tail cell (the last cell)
+	snakeCell nextPosition();					//where the head it's going to be after moving
 	//fer algun metode per obtenir un iterador de totes les caselles, o algo per obtenir totes les caselles
 private:
 	directions movDirection;				//the direction the snake is moving
-	//segurament un dequeue de Cell's per tota la serp
-	Cell previousTail;						//tail's position before moving			-----no se si realment fa falta
-	std::deque<Cell> cells;
+	//snakeCell previousTail;						//tail's position before moving			-----no se si realment fa falta
+	std::deque<snakeCell> cells;
+	bool growing;
+	snakeCell startingCell;
+	directions startingDir;
 };

@@ -6,7 +6,7 @@
 struct Button
 {
 	Transform transform;
-	Color  frontColor = { 0, 150, 0 }, backColor= { 50, 200, 230 };
+	Color  frontColor = { 0, 150, 0 }, backColor= { 50, 200, 230 };					//default colors
 	Sint32 width=0, height=0;
 	char* text="";
 	bool isActive = true;
@@ -26,12 +26,8 @@ struct Button
 		return false;
 	}
 	void Draw() {
-		if (isActive) {
+		if (isActive) {																//only draws button if it's active
 			GUI::DrawButton<FontID::CANDY>(text, transform, frontColor, backColor);
 		}
-	}
-
-	~Button() {
-		
 	}
 };

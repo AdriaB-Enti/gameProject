@@ -13,18 +13,22 @@ SnakeGrid::SnakeGrid(Sint32 nrows, Sint32 ncols) : snake({ 1,1 })
 
 SnakeGrid::~SnakeGrid()
 {
+
 }
 
 void SnakeGrid::Update()
 {
+
 }
 
 void SnakeGrid::Draw()
 {
+
 }
 
 void SnakeGrid::reset()
 {
+
 }
 
 Snake SnakeGrid::getSnake()
@@ -32,7 +36,7 @@ Snake SnakeGrid::getSnake()
 	return snake;
 }
 
-bool SnakeGrid::isOutsideGrid(Cell cell)
+bool SnakeGrid::isOutsideGrid(snakeCell cell)
 {
 	//if()... return true
 	return false;

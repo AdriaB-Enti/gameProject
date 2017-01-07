@@ -31,5 +31,3 @@ void SnakeScene::setDifficulty(const difficulty d)
 {
 	SnakeScene::selectedDif = d;
 }
-
-
