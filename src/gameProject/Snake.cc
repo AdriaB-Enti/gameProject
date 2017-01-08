@@ -11,6 +11,7 @@ Snake::Snake(snakeCell newHead)
 	newHead.y--;
 	cells.push_back(newHead);			//tail
 	growing = false;
+	previousTail = getTail();
 }
 
 Snake::~Snake()
@@ -19,6 +20,7 @@ Snake::~Snake()
 }
 
 void Snake::Update() {
+	previousTail = getTail();
 	cells.push_front(nextPosition());		//move snake's head one position (1 cell)
 	if (!growing) {
 		cells.pop_back();					//remove tail
@@ -35,11 +37,21 @@ void Snake::growUp()
 
 void Snake::setDirection(directions newDir)
 {
-	movDirection = newDir;
+	//check if we are chosing a valid direction
+	//if snake would move to its body, direction isn't change
+	snakeCell nextPos = nextPosition(newDir);
+	if (nextPos.x != getBody().x || nextPos.y != getBody().y) {
+		movDirection = newDir;
+	}
 }
 
 snakeCell Snake::getHead() {
 	return cells.front();
+}
+
+snakeCell Snake::getBody()
+{
+	return cells.at(1);
 }
 
 snakeCell Snake::getTail() {
@@ -47,9 +59,12 @@ snakeCell Snake::getTail() {
 }
 
 snakeCell Snake::nextPosition() {
-	snakeCell nextPos = getHead();
+	return nextPosition(movDirection);
+}
 
-	switch (movDirection)
+snakeCell Snake::nextPosition(directions testingDir) {
+	snakeCell nextPos = getHead();
+	switch (testingDir)
 	{
 	case Snake::directions::up:
 		nextPos.y--;
@@ -70,10 +85,15 @@ snakeCell Snake::nextPosition() {
 	return nextPos;
 }
 
-//auto Snake::getIterator()		//for iterating all snake cells
-//{
-//	return cells.begin;
-//}
+snakeCell Snake::prevTail()
+{
+	return previousTail;
+}
+
+bool Snake::hasMoved()
+{
+	return (previousTail.x != getTail().x || previousTail.y != getTail().y);
+}
 
 int Snake::getSize()			//snake size (including head and tail cells)
 {
