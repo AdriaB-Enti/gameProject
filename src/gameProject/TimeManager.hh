@@ -28,7 +28,7 @@ private:
 	TimeManager(const TimeManager &rhs) = delete;
 	TimeManager &operator=(const TimeManager &rhs) = delete;
 private:
-	float m_deltatime{ .0f }; // Delta time in seconds
-	Uint32 lastTime{ SDL_GetTicks() }; // Last time sample in seconds
+	float m_deltatime{ .0f }; // Delta time in MILIseconds
+	Uint32 lastTime{ SDL_GetTicks() }; // Last time sample in MILIseconds
 	float renderTime{ 0.0f }; // Time control for rendering
 };

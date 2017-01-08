@@ -3,34 +3,25 @@
 #include "SnakeGrid.hh"
 #include "Snake.hh"
 #include "InputManager.hh"
+#include "TimeManager.hh"
 
-//BORRAR
-#include "InputManager.hh"
+#define updateTime 200
 
-SnakeGrid::SnakeGrid(Sint32 nrows, Sint32 ncols, Sint32 cellWidth, Sint32 cellHeight) : snake({ 1,3 })
+SnakeGrid::SnakeGrid(Sint32 nrows, Sint32 ncols, Sint32 ncellWidth, Sint32 ncellHeight) : snake({ 1,3 })
 {
-	rows = nrows;
-	columns = ncols;
-	//crear grid
-	gridCells = new Sprite*[nrows];						//create rows
-	for (int i = 0; i < nrows; ++i) {
-		gridCells[i] = new Sprite[ncols];				//create columns for every row
+	rows = nrows+2;										//2 extra cells for borders on left and right
+	columns = ncols+2;									//same for columns
+	cellWidth = ncellWidth;
+	cellHeight = ncellHeight;
+	//creating the grid:
+	gridCells = new Sprite*[rows];						//create rows
+	for (int i = 0; i < rows; ++i) {
+		gridCells[i] = new Sprite[columns];				//create columns for every row
 	}
-	for (int row = 0; row < nrows; ++row) {				//inicialize grid
-		for (int col = 0; col < ncols; ++col) {
-			gridCells[row][col].transform = { cellWidth / 2 + cellWidth*row, 
-				cellHeight/2 + cellHeight*col, cellWidth, cellHeight };	//x, y, w, h
-			if (col == 0 || col == ncols - 1 || row == 0 || row == nrows-1) {
-				gridCells[row][col].objectID = ObjectID::SNAKE_WALL;
-			}
-			else {
-				gridCells[row][col].objectID = ObjectID::EMPTY_SNAKE;
-			}
-		}
-	}
-	srand(unsigned(time(nullptr)));						//in order to get random numbers
-	placeApple();										//insert apple
-	placeSnake();
+
+	reset();											//inicialize grid
+
+	appleScore = 100;
 }
 
 SnakeGrid::~SnakeGrid()
@@ -40,19 +31,39 @@ SnakeGrid::~SnakeGrid()
 
 void SnakeGrid::Update()
 {
-	if (IM.IsKeyDown<'l'>()) {
-		placeApple();
-		if (isInsideGrid(snake.nextPosition())) {
-			gridCells[snake.getHead().x][snake.getHead().y].objectID = ObjectID::SNAKE_BODY;
-			snake.Update();
-			gridCells[snake.getHead().x][snake.getHead().y].objectID = ObjectID::SNAKE_HEAD;
-			gridCells[snake.getTail().x][snake.getTail().y].objectID = ObjectID::SNAKE_TAIL;
-			if (snake.hasMoved()) {						//if snake has moved the tail, clear tail cell
-				gridCells[snake.prevTail().x][snake.prevTail().y].objectID = ObjectID::EMPTY_SNAKE;
-			}
+	detectKeyboard();
+	timer += TM.GetDeltaTime();
+	if (timer > updateTime)
+	{
+		timer = 0;
+		snakeCell nextCell = snake.nextPosition();
+		ObjectID cellID = gridCells[nextCell.x][nextCell.y].objectID;
+
+		if (isInsideGrid(nextCell) && (cellID == ObjectID::EMPTY_SNAKE 
+				|| cellID == ObjectID::SNAKE_APLE)) {		//only move snake if next position is empty or an apple
+			if (cellID == ObjectID::SNAKE_APLE)						//if it's an apple, add score, place a new one, grow snake
+				{
+					score += appleScore;
+					placeApple();
+					snake.growUp();
+				}
+				gridCells[snake.getHead().x][snake.getHead().y].objectID = ObjectID::SNAKE_BODY;
+				snake.Update();
+				gridCells[snake.getHead().x][snake.getHead().y].objectID = ObjectID::SNAKE_HEAD;
+				gridCells[snake.getTail().x][snake.getTail().y].objectID = ObjectID::SNAKE_TAIL;
+				if (snake.hasMoved()) {						//if snake has moved the tail, clear tail cell
+					gridCells[snake.prevTail().x][snake.prevTail().y].objectID = ObjectID::EMPTY_SNAKE;
+				}
+			
+		}
+		else {
+			reset();
 		}
 	}
-	detectKeyboard();
+	if (IM.IsKeyDown<'l'>()) {	//BORRAR
+		placeApple();
+	}
+
 }
 
 void SnakeGrid::Draw()
@@ -66,7 +77,24 @@ void SnakeGrid::Draw()
 
 void SnakeGrid::reset()
 {
-
+	for (int row = 0; row < rows; ++row) {				//inicialize grid
+		for (int col = 0; col < columns; ++col) {
+			gridCells[row][col].transform = { cellWidth / 2 + cellWidth*row,
+				cellHeight / 2 + cellHeight*col, cellWidth, cellHeight };	//x, y, w, h
+			if (col == 0 || col == columns - 1 || row == 0 || row == rows - 1) {
+				gridCells[row][col].objectID = ObjectID::SNAKE_WALL;
+			}
+			else {
+				gridCells[row][col].objectID = ObjectID::EMPTY_SNAKE;
+			}
+		}
+	}
+	srand(unsigned(time(nullptr)));						//in order to get random numbers
+	snake = Snake({ 1,3 });
+	placeSnake();
+	placeApple();										//insert apple
+	timer = 0;
+	score = 0;
 }
 
 Snake SnakeGrid::getSnake()

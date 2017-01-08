@@ -24,4 +24,8 @@ private:
 	//estructura da dades per les pomes?
 	//estructura de dades per els obstacles?
 	Snake snake;
+	float timer;		//timer for time management, in MILIseconds
+	Sint32 score;
+	//level dependent vars:
+	Sint32 appleScore;
 };
