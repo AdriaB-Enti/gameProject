@@ -4,10 +4,6 @@
 class levelDetails
 {
 public:
-	void startGame();
-	void resetLevel();
-	void nextLevel();
-
 	inline void setInitValues(int pos, int value) {initValues[pos] = value;};	//set value in initValues array pos
 
 	inline int getCells() {return initValues[0];};
@@ -24,12 +20,17 @@ public:
 	void appleEaten();
 	void updateTimer();
 
-	void testing();
+	void startGame();
+	//void restartGame?
+	void resetLevel();
+	void nextLevel();
+
 
 	levelDetails();
 	~levelDetails();
 
 private:
-	int level, lives, score, food, time, snakeVel;
+	int level, lives, score, food, snakeVel;
+	float time;
 	int initValues[5];				//cells, timeToComplete, snakeVel, initFood, foodIncrease
 };

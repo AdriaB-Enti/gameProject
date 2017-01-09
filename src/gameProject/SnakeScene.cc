@@ -26,10 +26,8 @@ void SnakeScene::OnEntry(void)
 	case difficulty::hard: difString = "Hard";
 		break;
 	}
-	//snakegrid.start(difString);
-	//IOManager::loadxml(difString);
-
-	snakegrid.reset();
+	snakegrid.start(difString);
+	snakegrid.resetGrid();			//cal?
 
 }
 

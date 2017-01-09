@@ -6,68 +6,47 @@
 #include "TimeManager.hh"
 #include "SnakeScene.hh"
 #include "IOManager.hh"
+#include "LevelDetails.hh"
 
 #define updateTime 200
 #define initLives 3
 
 SnakeGrid::SnakeGrid(Sint32 ncellWidth, Sint32 ncellHeight) : snake({ 1,3 })
 {
-	timeToUpdate = updateTime;
-	
-	if (SnakeScene::getDifficulty() == difficulty::easy) {	//BORRAR (entra aqui sempre pq en execucio esta en easy)
-		rows = 10;
-		columns = 10;
-	}
-	//IOManager::xmlParameters parameters = IOManager::loadxml("Easy");
-
-	rows +=2;										//2 extra cells for borders on left and right
-	columns +=2;									//same for columns
+	srand(unsigned(time(nullptr)));						//in order to get random numbers
 	cellWidth = ncellWidth;
 	cellHeight = ncellHeight;
-	//creating the grid:
-	gridCells = new Sprite*[rows];						//create rows
-	for (int i = 0; i < rows; ++i) {
-		gridCells[i] = new Sprite[columns];				//create columns for every row
-	}
 
-	appleScore = 100;
-	lives = initLives;
-
+	timeToUpdate = updateTime;
+	
 }
 
 SnakeGrid::~SnakeGrid()
 {
-	for (int row = 0; row < rows; ++row) {
+	for (int row = 0; row < lvlDetails.getCells(); ++row) {
 		delete[] gridCells[row];
 	}
 	delete[] gridCells;
 }
 
-void SnakeGrid::start(std::string difStr) {
-	//IOManager::xmlParameters parameters = IOManager::loadxml(difStr);
-	IOManager::xmlParameters parameters;
-	/*
-	rows = parameters.cells+2;										//2 extra cells for borders on left and right
-	columns = parameters.cells+2;									//same for columns
-	timeToComplete = parameters.timeToComplete;
-	//velocidad
-	initFood = parameters.initFood;
-	foodIncrease = parameters.foodIncrease;
-	//creating the grid:
-	gridCells = new Sprite*[rows];						//create rows
-	for (int i = 0; i < rows; ++i) {
-		gridCells[i] = new Sprite[columns];				//create columns for every row
+void SnakeGrid::start(std::string difStr) {					//start game for the first time
+	lvlDetails = IOManager::loadxml(difStr);
+	lvlDetails.setInitValues(0, lvlDetails.getCells() + 2);	//add 2 rows / colms. for borders
+	lvlDetails.startGame();
+	gridCells = new Sprite*[lvlDetails.getCells()];						//create rows
+	for (int i = 0; i < lvlDetails.getCells(); ++i) {
+		gridCells[i] = new Sprite[lvlDetails.getCells()];				//create columns for every row
 	}
-	*/
+	resetGrid();
 }
 
 void SnakeGrid::Update()
 {
 	detectKeyboard();
-	timer += TM.GetDeltaTime();
-	if (timer > timeToUpdate)
+	snakeTimer += TM.GetDeltaTime();
+	if (snakeTimer > timeToUpdate)
 	{
-		timer = 0;
+		snakeTimer = 0;
 		snakeCell nextCell = snake.nextPosition();
 		ObjectID cellID = gridCells[nextCell.x][nextCell.y].objectID;
 
@@ -75,7 +54,7 @@ void SnakeGrid::Update()
 				|| cellID == ObjectID::SNAKE_APLE)) {		//only move snake if next position is empty or an apple
 			if (cellID == ObjectID::SNAKE_APLE)						//if it's an apple: add score, place a new one, grow snake
 				{
-					score += appleScore;
+					lvlDetails.appleEaten();
 					placeApple();
 					snake.growUp();
 				}
@@ -107,26 +86,29 @@ void SnakeGrid::Update()
 				}
 			
 		}
-		else {
-			reset();
+		else {			//snake has crashed with a wall
+			lvlDetails.resetLevel();
+			resetGrid();
 		}
+
+		//COMPROVAR QUE TINGUEM VIDES? (o fer-ho des de la snakeScene)
+		//Comprovar que queda temps?
 	}
 }
 
 void SnakeGrid::Draw()
 {
-	for (int row = 0; row < rows; ++row) {
-		for (int col = 0; col < columns; ++col) {
+	for (int row = 0; row < lvlDetails.getCells(); ++row) {
+		for (int col = 0; col < lvlDetails.getCells(); ++col) {
 			gridCells[row][col].Draw();
 		}
 	}
-
 }
 
-void SnakeGrid::reset()
+void SnakeGrid::resetGrid()
 {
-	for (int row = 0; row < rows; ++row) {				//initialize grid
-		for (int col = 0; col < columns; ++col) {
+	for (int row = 0; row < lvlDetails.getCells(); ++row) {				//initialize grid
+		for (int col = 0; col < lvlDetails.getCells(); ++col) {
 			gridCells[row][col].transform = { cellWidth / 2 + cellWidth*row,
 				cellHeight / 2 + cellHeight*col, cellWidth, cellHeight };	//x, y, w, h
 			if (isInsideGrid({col,row})) {
@@ -138,11 +120,10 @@ void SnakeGrid::reset()
 			gridCells[row][col].angle = 0;
 		}
 	}
-	srand(unsigned(time(nullptr)));						//in order to get random numbers
 	snake = Snake({ 1,3 });
 	placeSnake();
 	placeApple();										//insert apple
-	timer = 0;
+	snakeTimer = 0;
 	score = 0;
 	timeToUpdate = updateTime;
 }
@@ -154,21 +135,21 @@ Snake SnakeGrid::getSnake()
 
 bool SnakeGrid::isInsideGrid(snakeCell cell)		//returns true if given cell is inside the grid (without touching the borders)
 {
-	if (cell.x > 0 && cell.x < rows-1 && cell.y > 0 && cell.y < columns - 1) {
+	if (cell.x > 0 && cell.x < lvlDetails.getCells()-1 && cell.y > 0 && cell.y < lvlDetails.getCells() - 1) {
 		return true;
 	}
 	return false;
 }
 
 void SnakeGrid::placeApple() {				//places apple in a random empty cell
-	int randCol = 1+rand()%(columns-2);
-	int randRow = 1 + rand() % (rows - 2);
+	int randCol = 1+rand()%(lvlDetails.getCells()-2);
+	int randRow = 1 + rand() % (lvlDetails.getCells()- 2);
 	while (gridCells[randRow][randCol].objectID != ObjectID::EMPTY_SNAKE) {
-		randCol = 1 + rand() % (columns - 2);
-		randRow = 1 + rand() % (rows - 2);
+		randCol = 1 + rand() % (lvlDetails.getCells()- 2);
+		randRow = 1 + rand() % (lvlDetails.getCells()- 2);
 	}
 	gridCells[randRow][randCol].objectID = ObjectID::SNAKE_APLE;
-	timeToUpdate -= 3;
+	timeToUpdate -= 5;
 }
 
 void SnakeGrid::placeSnake()

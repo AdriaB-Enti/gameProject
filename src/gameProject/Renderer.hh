@@ -27,7 +27,7 @@ class Renderer {
 		m_SDLRenderer = SDL_CreateRenderer(W(), -1, SDL_RENDERER_ACCELERATED);
 		ASSERT(m_SDLRenderer != nullptr);
 		//Initialize renderer color
-		SDL_SetRenderDrawColor(m_SDLRenderer, 255, 255, 255, 255);
+		SDL_SetRenderDrawColor(m_SDLRenderer, 20, 5, 168, 255);
 		//Initialize PNG loading
 		constexpr int imgFlags = IMG_INIT_PNG | IMG_INIT_JPG;
 		ASSERT((IMG_Init(imgFlags) & imgFlags));

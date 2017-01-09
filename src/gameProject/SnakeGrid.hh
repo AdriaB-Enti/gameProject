@@ -11,7 +11,7 @@ public:
 	void start(std::string difStr);
 	void Update();
 	void Draw();
-	void reset();
+	void resetGrid();
 	Snake getSnake();
 	void placeApple();
 	void placeSnake();
@@ -26,7 +26,7 @@ private:
 	//estructura da dades per les pomes?
 	//estructura de dades per els obstacles?
 	Snake snake;
-	float timer;		//timer to control snake's speed
+	float snakeTimer;		//timer to control snake's speed
 	//float 
 	Sint32 score, lives;
 	//level dependent vars:

@@ -1,6 +1,7 @@
 #include "LevelDetails.hh"
 #include "TimeManager.hh"
 
+
 void levelDetails::startGame()
 {
 	level = 0;
@@ -43,7 +44,7 @@ bool levelDetails::isGameOver()
 void levelDetails::appleEaten()
 {
 	score += food * 100;
-	snakeVel += score / 1000;	//mirar bé...
+	//snakeVel += score / 1000;	//updateTime
 	food++;
 }
 
@@ -52,11 +53,6 @@ void levelDetails::updateTimer()
 	time += TM.GetDeltaTime();
 }
 
-
-void levelDetails::testing()	//BORRAR
-{
-	
-}
 
 levelDetails::levelDetails()
 {
