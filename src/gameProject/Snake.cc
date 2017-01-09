@@ -90,6 +90,11 @@ snakeCell Snake::prevTail()
 	return previousTail;
 }
 
+Snake::directions Snake::getDirection()
+{
+	return movDirection;
+}
+
 bool Snake::hasMoved()
 {
 	return (previousTail.x != getTail().x || previousTail.y != getTail().y);

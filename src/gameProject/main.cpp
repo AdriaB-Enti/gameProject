@@ -12,7 +12,7 @@
 //#include "Engine.h";
 #include "GameEngine.hh"
 
-const int WIDTH{ 640 }, HEIGHT{ 480 };
+const int WIDTH{ 1080 }, HEIGHT{ 720 };
 int multipliers[5];
 //
 //enum Scenes

@@ -10,7 +10,7 @@ using namespace Logger;
 
 
 GameScene::GameScene(void) : m_grid("lvl/testLvl.dat", CELL_WIDTH, CELL_HEIGHT) {
-	m_background = { { 0, 0, W.GetWidth(), W.GetHeight() }, ObjectID::BG_00 };
+	//m_background = { { 0, 0, W.GetWidth(), W.GetHeight() }, ObjectID::BG_00 };
 }
 
 GameScene::~GameScene(void) {

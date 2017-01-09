@@ -29,6 +29,7 @@ public:
 	snakeCell nextPosition();					//where the head it's going to be after moving
 	snakeCell nextPosition(directions testingDir);
 	snakeCell prevTail();					//where the head it's going to be after moving
+	Snake::directions getDirection();
 	bool hasMoved();
 	//fer algun metode per obtenir un iterador de totes les caselles, o algo per obtenir totes les caselles
 	int getSize();

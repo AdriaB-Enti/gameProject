@@ -6,8 +6,9 @@
 class SnakeGrid
 {
 public:
-	SnakeGrid(Sint32 nrows, Sint32 ncols, Sint32 cellWidth, Sint32 cellHeight);
+	SnakeGrid(Sint32 cellWidth, Sint32 cellHeight);
 	~SnakeGrid();
+	void start(std::string difStr);
 	void Update();
 	void Draw();
 	void reset();
@@ -15,6 +16,7 @@ public:
 	void placeApple();
 	void placeSnake();
 	void detectKeyboard();
+	//void loadLvl(difficulty dif);
 private:
 	bool isInsideGrid(snakeCell cell);	//for checking if a cell is outside the grid
 	Sint32 rows, columns;			//number of cells in a row / column
@@ -24,8 +26,10 @@ private:
 	//estructura da dades per les pomes?
 	//estructura de dades per els obstacles?
 	Snake snake;
-	float timer;		//timer for time management, in MILIseconds
-	Sint32 score;
+	float timer;		//timer to control snake's speed
+	//float 
+	Sint32 score, lives;
 	//level dependent vars:
 	Sint32 appleScore;
+	int timeToUpdate, timeToComplete, initFood, foodIncrease;
 };

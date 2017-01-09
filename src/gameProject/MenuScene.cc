@@ -6,8 +6,7 @@
 
 MenuScene::MenuScene(void)
 {
-	m_background = { { 0, 0, W.GetWidth(), W.GetHeight() }, ObjectID::BG_01 };
-
+	m_background = { { 0, 0, W.GetWidth(), W.GetHeight() }, ObjectID::BG_01, 0};
 	play.init("Play", { W.GetWidth() >> 1, int(W.GetHeight()*.1f), 1, 1 });
 	exit.init("Exit", { W.GetWidth() >> 1, int(W.GetHeight()*.8f), 1, 1 });
 

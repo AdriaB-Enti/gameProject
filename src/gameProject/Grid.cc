@@ -1,11 +1,11 @@
 #include <ctime>
 #include "Grid.hh"
 #include "Window.hh"
-#include "IOManager.hh"
+//#include "IOManager.hh"
 #include "TimeManager.hh"
 
 Grid::Grid(std::string &&filename, int cellWidth, int cellHeight) {
-	auto lvlData(IOManager::LoadLevel(std::move(filename), m_rows, m_cols));
+	//auto lvlData(IOManager::LoadLevel(std::move(filename), m_rows, m_cols));
 	cellData = new Cell*[m_rows];
 	for (int i = 0; i < m_rows; ++i) cellData[i] = new Cell[m_cols];
 	srand(unsigned(time(nullptr)));
@@ -16,7 +16,7 @@ Grid::Grid(std::string &&filename, int cellWidth, int cellHeight) {
 				cellWidth, cellHeight };
 			cellData[i][j].objectID = ObjectID::CELL_EMPTY;
 			CandyTransform(i, j) = cellData[i][j].transform;
-			CandyID(i, j) = lvlData[i][j];
+			//CandyID(i, j) = lvlData[i][j];
 		}
 	}
 	gridState = GridState::LINE_CHECKING;

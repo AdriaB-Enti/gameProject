@@ -78,6 +78,13 @@ public:
 	void Push(const ObjectID &objectID, const Transform &transform) {
 		ASSERT(!SDL_RenderCopy(m_SDLRenderer, m_textureData[objectID], nullptr, &transform()));
 	}
+
+	void Push(const ObjectID &objectID, const Transform &transform, int angle) {
+		SDL_RenderCopyEx(m_SDLRenderer, m_textureData[objectID], nullptr, &transform(),
+			angle, NULL, SDL_FLIP_NONE);
+	}
+
+
 	void Clear(void) const { SDL_RenderClear(m_SDLRenderer); };
 	void Render(void) const { SDL_RenderPresent(m_SDLRenderer); };
 private:
