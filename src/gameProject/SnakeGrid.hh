@@ -1,7 +1,7 @@
 #pragma once
 #include "Sprite.hh"
 #include "Snake.hh"
-
+#include "LevelDetails.hh"
 
 class SnakeGrid
 {
@@ -32,4 +32,5 @@ private:
 	//level dependent vars:
 	Sint32 appleScore;
 	int timeToUpdate, timeToComplete, initFood, foodIncrease;
+	levelDetails lvlDetails;
 };

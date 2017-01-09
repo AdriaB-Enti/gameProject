@@ -44,6 +44,9 @@
     <ClCompile Include="Snake.cc">
       <Filter>Source Files\Model</Filter>
     </ClCompile>
+    <ClCompile Include="LevelDetails.cc">
+      <Filter>Source Files\Model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Button.h">
@@ -119,6 +122,9 @@
       <Filter>Source Files\Model</Filter>
     </ClInclude>
     <ClInclude Include="Snake.hh">
+      <Filter>Source Files\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelDetails.hh">
       <Filter>Source Files\Model</Filter>
     </ClInclude>
   </ItemGroup>

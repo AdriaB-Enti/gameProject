@@ -8,25 +8,12 @@
 #include "Assert.hh"
 #include "Resource.hh"
 #include <XML/rapidxml_utils.hpp>
+#include "LevelDetails.hh"
 using namespace Logger;
 
 namespace IOManager {
-
-	// Base test function for XML purposes (TODO)
-	/*void TestXML(std::string &&filename) {
-	rapidxml::file<> xmlFile(RESOURCE_FILE(filename));
-	rapidxml::xml_document<> doc;
-	doc.parse<0>(xmlFile.data());
-	rapidxml::xml_node<> *root_node = doc.first_node("document");
-	for (rapidxml::xml_node<> * node = root_node->first_node("node"); node; node = node->next_sibling()) {
-	Println("Node: ",
-	node->first_attribute("att1")->value(),
-	" - ",
-	node->first_attribute("att2")->value());
-	}
-	}*/
-
-	struct xmlParameters
+	
+	struct xmlParameters	//BORRAR
 	{
 		int cells;
 		int timeToComplete;
@@ -35,9 +22,9 @@ namespace IOManager {
 		int foodIncrease;
 	};
 
-	xmlParameters loadxml(std::string difficulty) {
+	levelDetails loadxml(std::string difficulty) {
 		//loads the correct game difficulty configuration
-		xmlParameters parameters;
+		levelDetails details = levelDetails();
 		
 		rapidxml::file<> xmlFile("../../res/cfg/levelcfg.xml");
 		rapidxml::xml_document<> doc;
@@ -50,19 +37,7 @@ namespace IOManager {
 				rapidxml::xml_node<> *multNode = difNode->first_node();
 				for (int i = 0; i < 5; i++)										//get the 5 parameters
 				{
-					switch (i)
-					{
-					case 0: parameters.cells = atoi(multNode->value());				//atoi -> parse char to int
-						break;
-					case 1: parameters.timeToComplete = atoi(multNode->value());
-						break;
-					case 2: parameters.snakeVel = atoi(multNode->value());
-						break;
-					case 3: parameters.initFood= atoi(multNode->value());
-						break;
-					case 4: parameters.foodIncrease = atoi(multNode->value());
-						break;
-					}
+					details.setInitValues(i, atoi(multNode->value()));
 					multNode = multNode->next_sibling();
 				}
 				break;															//no need to check the rest
@@ -70,7 +45,7 @@ namespace IOManager {
 			difNode = difNode->next_sibling();
 		}
 
-		return parameters;
+		return details;
 	}
 
 

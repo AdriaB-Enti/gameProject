@@ -13,8 +13,8 @@
 SnakeGrid::SnakeGrid(Sint32 ncellWidth, Sint32 ncellHeight) : snake({ 1,3 })
 {
 	timeToUpdate = updateTime;
-
-	if (SnakeScene::getDifficulty() == difficulty::easy) {
+	
+	if (SnakeScene::getDifficulty() == difficulty::easy) {	//BORRAR (entra aqui sempre pq en execucio esta en easy)
 		rows = 10;
 		columns = 10;
 	}
@@ -32,6 +32,7 @@ SnakeGrid::SnakeGrid(Sint32 ncellWidth, Sint32 ncellHeight) : snake({ 1,3 })
 
 	appleScore = 100;
 	lives = initLives;
+
 }
 
 SnakeGrid::~SnakeGrid()
@@ -43,7 +44,9 @@ SnakeGrid::~SnakeGrid()
 }
 
 void SnakeGrid::start(std::string difStr) {
-	IOManager::xmlParameters parameters = IOManager::loadxml(difStr);
+	//IOManager::xmlParameters parameters = IOManager::loadxml(difStr);
+	IOManager::xmlParameters parameters;
+	/*
 	rows = parameters.cells+2;										//2 extra cells for borders on left and right
 	columns = parameters.cells+2;									//same for columns
 	timeToComplete = parameters.timeToComplete;
@@ -55,6 +58,7 @@ void SnakeGrid::start(std::string difStr) {
 	for (int i = 0; i < rows; ++i) {
 		gridCells[i] = new Sprite[columns];				//create columns for every row
 	}
+	*/
 }
 
 void SnakeGrid::Update()

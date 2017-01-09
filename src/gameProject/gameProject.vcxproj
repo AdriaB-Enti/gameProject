@@ -116,6 +116,7 @@
   <ItemGroup>
     <ClCompile Include="GameScene.cc" />
     <ClCompile Include="Grid.cc" />
+    <ClCompile Include="LevelDetails.cc" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MenuScene.cc" />
     <ClCompile Include="Snake.cc" />
@@ -133,6 +134,7 @@
     <ClInclude Include="ID.hh" />
     <ClInclude Include="InputManager.hh" />
     <ClInclude Include="IOManager.hh" />
+    <ClInclude Include="LevelDetails.hh" />
     <ClInclude Include="Logger.hh" />
     <ClInclude Include="main.h" />
     <ClInclude Include="MenuScene.hh" />
