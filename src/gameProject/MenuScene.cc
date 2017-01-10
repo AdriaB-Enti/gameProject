@@ -56,7 +56,9 @@ void MenuScene::Update(void)
 			std::cout << "Loading Hard..." << std::endl;
 		}
 	}
-
+	if (IM.IsKeyDown<KEY_BUTTON_ESCAPE>()) {	//when pressing scape, Play and exit are shown
+		setInitButtons();
+	}
 }
 
 void MenuScene::Draw(void)

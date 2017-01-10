@@ -45,35 +45,38 @@ void SnakeGrid::Update()
 	lvlDetails.updateTimer();
 	detectKeyboard();
 	snakeTimer += TM.GetDeltaTime();
-	if (snakeTimer > timeToUpdate)
+	if (snakeTimer > timeToUpdate)					
 	{
 		snakeTimer = 0;
 		snakeCell nextCell = snake.nextPosition();
 		ObjectID cellID = gridCells[nextCell.x][nextCell.y].objectID;
 
-		if (isInsideGrid(nextCell) && (cellID == ObjectID::EMPTY_SNAKE 
-				|| cellID == ObjectID::SNAKE_APLE)) {		//only move snake if next position is empty or an apple
-			if (cellID == ObjectID::SNAKE_APLE)						//if it's an apple: add score, place a new one, grow snake
+
+		if (lvlDetails.isTimeOver()) {				//when time runs out, level resets
+			resetGrid();
+			lvlDetails.resetLevel();
+		}
+		else {
+			if (isInsideGrid(nextCell) && (cellID == ObjectID::EMPTY_SNAKE
+				|| cellID == ObjectID::SNAKE_APLE)) {				//only move snake if next position is empty or an apple
+				if (cellID == ObjectID::SNAKE_APLE)					//if it's an apple: add score, place a new one, grow snake
 				{
 					lvlDetails.appleEaten();
 					placeApple();
 					snake.growUp();
 				}
-			if (lvlDetails.isLevelCompleted() || lvlDetails.isTimeOver()) {
+				updateGrid();						//update snake's position in grid
+			}
+			else {									//snake has crashed with a wall
+				lvlDetails.resetLevel();
 				resetGrid();
-				if(lvlDetails.isLevelCompleted())
-					lvlDetails.nextLevel();
+			}
 
-			}
-			else {					//update snake's position in grid if everything was ok
-				updateGrid();
-			}
-				
+			if (lvlDetails.isLevelCompleted())		//when level is completed we jump to the next one
+				lvlDetails.nextLevel();
+
 		}
-		else {						//snake has crashed with a wall
-			lvlDetails.resetLevel();
-			resetGrid();
-		}
+
 	}
 }
 

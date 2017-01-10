@@ -1,6 +1,3 @@
-
-//Esta será la clase Scene, de la que heredaran todas las escenas
-
 #pragma once
 
 // Enum state fot each Scene in the Game
