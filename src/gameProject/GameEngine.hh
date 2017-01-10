@@ -15,15 +15,14 @@ namespace GameEngine {
 		R.LoadFont<FontID::ARIAL>("fnt/arial.ttf", 40);
 		R.LoadFont<FontID::CANDY>("fnt/candy.ttf", 50);
 		R.LoadFont<FontID::FACTORY>("fnt/candsb.ttf", 80);
-		/*R.LoadTexture<ObjectID::CELL_EMPTY>("gfx/empty.png"); // S'HA DE MODIFICAR*/
 		R.LoadTexture<ObjectID::EMPTY_SNAKE>("gfx/Empty_Snake.png");
 		R.LoadTexture<ObjectID::SNAKE_APLE>("gfx/Snake_Apple.png");
 		R.LoadTexture<ObjectID::SNAKE_HEAD>("gfx/Snake_head.png");
 		R.LoadTexture<ObjectID::SNAKE_BODY>("gfx/Snake_Body.png");
 		R.LoadTexture<ObjectID::SNAKE_TAIL>("gfx/Snake_Tail.png");
 		R.LoadTexture<ObjectID::SNAKE_WALL>("gfx/Snake_Wall.png");
+		R.LoadTexture<ObjectID::SNAKE_BAR>("gfx./Snake_Bar.png");
 
-		//R.LoadTexture<ObjectID::BG_00>("gfx/bg1.jpg");
 		R.LoadTexture<ObjectID::BG_01>("gfx./background.png");
 	}
 	//! Adds the game scenes into the Scene Manager and decides which is the first screen

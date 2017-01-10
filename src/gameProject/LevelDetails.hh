@@ -23,10 +23,8 @@ public:
 	void updateTimer();
 
 	void startGame();
-	//void restartGame?
 	void resetLevel();
 	void nextLevel();
-
 
 	levelDetails();
 	~levelDetails();

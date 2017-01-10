@@ -12,13 +12,14 @@ public:
 	void Update();
 	void Draw();
 	void resetGrid();
-	Snake getSnake();
 	void placeApple();
 	void placeSnake();
 	void detectKeyboard();
+
+	Snake getSnake();
 	bool gameEnded();
 	int currentScore();
-	int timeLeft();
+	float timeLeft();
 private:
 	bool isInsideGrid(snakeCell cell);	//for checking if a cell is outside the grid
 	Sint32 rows, columns;				//number of cells in a row / column

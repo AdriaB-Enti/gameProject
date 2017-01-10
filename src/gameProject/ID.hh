@@ -4,10 +4,11 @@
 
 // Enum ID used to identify each Game Object in the Game
 enum class ObjectID : const int {
-	EMPTY_SNAKE,SNAKE_APLE, SNAKE_HEAD, SNAKE_BODY, SNAKE_TAIL, SNAKE_WALL, CANDY_MAX, // Candies IDs
+	EMPTY_SNAKE,SNAKE_APLE, SNAKE_HEAD, SNAKE_BODY, SNAKE_TAIL, SNAKE_WALL, CANDY_MAX, //non empty cells
 	CELL_EMPTY, // Cell IDs
 	BG_00,  // Background IDs
-	BG_01 //Background Menu
+	BG_01, //Background Menu
+	SNAKE_BAR //Time bar
 };
 inline std::ostream &operator<<(std::ostream &os, const ObjectID &id) { return os << int(id); };
 inline std::istream &operator >> (std::istream &is, ObjectID &id) { return is >> reinterpret_cast<int&>(id); };

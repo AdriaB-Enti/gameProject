@@ -19,10 +19,12 @@ public:
 	void OnExit(void) override;
 	void Update(void) override;
 	void Draw(void) override;
+
 	static void setDifficulty(const difficulty d);
 	static difficulty getDifficulty();
+
 private:
-	//playing state -> joc en marxa o joc parat (amb el menu in-game)
 	static difficulty selectedDif;					//selected difficulty
 	SnakeGrid snakegrid;
+	Sprite timeBar;
 };

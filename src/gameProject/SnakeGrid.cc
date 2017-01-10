@@ -166,9 +166,12 @@ int SnakeGrid::currentScore()
 	return lvlDetails.getScore();
 }
 
-int SnakeGrid::timeLeft()
+float SnakeGrid::timeLeft()
 {
-	return int((lvlDetails.getInitTimeToComplete()-lvlDetails.getTime())/1000);
+	if (lvlDetails.getTime() > 0) {
+		return 1 - lvlDetails.getTime() / lvlDetails.getInitTimeToComplete();
+	}
+	return 0;
 }
 
 void SnakeGrid::updateGrid()

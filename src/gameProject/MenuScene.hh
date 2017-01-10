@@ -14,6 +14,7 @@ public:
 	void OnExit(void) override;
 	void Update(void) override;
 	void Draw(void) override;
+
 	void setInitButtons();
 	void setDifButtons();
 private:
