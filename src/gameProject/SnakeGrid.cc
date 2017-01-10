@@ -38,6 +38,7 @@ void SnakeGrid::start(std::string difStr) {					//start game for the first time
 		gridCells[i] = new Sprite[lvlDetails.getCells()];				//create columns for every row
 	}
 	resetGrid();
+	timeToUpdate = lvlDetails.getInitSnakeVel();
 }
 
 void SnakeGrid::Update()
@@ -108,7 +109,7 @@ void SnakeGrid::resetGrid()
 	placeSnake();
 	placeApple();										//insert apple
 	snakeTimer = 0;
-	timeToUpdate = updateTime;
+	timeToUpdate = lvlDetails.getInitSnakeVel();
 }
 
 Snake SnakeGrid::getSnake()

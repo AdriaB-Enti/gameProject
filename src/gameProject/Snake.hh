@@ -21,10 +21,10 @@ public:
 	Snake(snakeCell newHead);
 	~Snake();
 	void Update();
-	void growUp();							//when the snake eats an apple and grows up
-	void setDirection(directions newDir);
+	void growUp();									//when the snake eats an apple and grows up
+	void setDirection(directions newDir);			//sets a new direction
 
-	snakeCell getHead();							//returns the snake's head cell			------ (usar els metodes front() i back() del deque
+	snakeCell getHead();							//returns the snake's head cell
 	snakeCell getBody();							//returns the snake's body (second cell)
 	snakeCell getTail();							//returns the snake's tail cell (the last cell)
 	snakeCell nextPosition();						//where the head it's going to be after moving
@@ -37,7 +37,7 @@ public:
 
 private:
 	directions movDirection;				//the direction the snake is moving
-	snakeCell previousTail;					//tail's position before moving			-----no se si realment fa falta
+	snakeCell previousTail;					//tail's position before moving
 	snakeCell startingCell;
 	directions startingDir;
 	std::deque<snakeCell> cells;

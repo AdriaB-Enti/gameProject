@@ -14,9 +14,7 @@ struct Button
 	void init(char* newText, Transform newTransform) {
 		text = newText;
 		transform = newTransform;
-		if (TTF_SizeText(R.GetFont<FontID::CANDY>(), text, &width, &height)){		//calculate button size (won't work well if scale isn't 1-1)
-			std::cout << "Error";	//usar l'assert?
-		}
+		TTF_SizeText(R.GetFont<FontID::CANDY>(), text, &width, &height);		//calculate button size (won't work well if scale isn't 1-1)
 	}
 	bool isInside(Sint32 x, Sint32 y) {												//checks if x,y coordinates are inside the button
 		if (isActive && (x > transform.x - width/2) && (x < transform.x + width/2)	//if Button is active, check the x

@@ -3,21 +3,21 @@
 	<difficulty mode="Easy">
 		<cellMult>33</cellMult>
 		<timeMult>60000</timeMult>
-		<snakeMult>1</snakeMult>
+		<snakeMult>220</snakeMult>
 		<foodMult>3</foodMult>
 		<foodIncrem>1</foodIncrem>
 	</difficulty>
 	<difficulty mode="Medium">
 		<cellMult>22</cellMult>
 		<timeMult>45000</timeMult>
-		<snakeMult>2</snakeMult>
+		<snakeMult>180</snakeMult>
 		<foodMult>5</foodMult>
 		<foodIncrem>2</foodIncrem>
 	</difficulty>
 	<difficulty mode="Hard">
 		<cellMult>11</cellMult>
 		<timeMult>30000</timeMult>
-		<snakeMult>3</snakeMult>
+		<snakeMult>165</snakeMult>
 		<foodMult>7</foodMult>
 		<foodIncrem>4</foodIncrem>
 	</difficulty>

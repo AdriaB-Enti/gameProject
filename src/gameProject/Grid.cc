@@ -1,7 +1,6 @@
 #include <ctime>
 #include "Grid.hh"
 #include "Window.hh"
-//#include "IOManager.hh"
 #include "TimeManager.hh"
 
 Grid::Grid(std::string &&filename, int cellWidth, int cellHeight) {

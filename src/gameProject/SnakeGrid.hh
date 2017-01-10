@@ -20,6 +20,7 @@ public:
 	bool gameEnded();
 	int currentScore();
 	float timeLeft();
+	inline int currentLives() { return lvlDetails.getlives();};
 private:
 	bool isInsideGrid(snakeCell cell);	//for checking if a cell is outside the grid
 	Sint32 rows, columns;				//number of cells in a row / column

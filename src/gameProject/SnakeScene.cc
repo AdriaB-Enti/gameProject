@@ -8,7 +8,7 @@
 difficulty SnakeScene::selectedDif = difficulty::easy;
 
 SnakeScene::SnakeScene(void):snakegrid(20, 20){
-	timeBar = { { int(W.GetWidth() *.75f), int(W.GetHeight()*.7f), timeBarWidth, 40 },
+	timeBar = { { int(W.GetWidth() *.74f), int(W.GetHeight()*.7f), timeBarWidth, 40 },
 		ObjectID::SNAKE_BAR, 0 };
 }
 
@@ -49,7 +49,7 @@ void SnakeScene::Update(void)
 		SM.SetCurScene<MenuScene>();
 	}
 
-	timeBar.transform.w = timeBarWidth * snakegrid.timeLeft();	//update the time bar lenght 
+	timeBar.transform.w = int(timeBarWidth * snakegrid.timeLeft());	//update the time bar lenght 
 }
 
 void SnakeScene::Draw(void)
@@ -57,14 +57,17 @@ void SnakeScene::Draw(void)
 	snakegrid.Draw();
 
 	GUI::DrawTextSolid<FontID::FACTORY>("Score:",
-	{ int(W.GetWidth() *.8f), int(W.GetHeight()*.25f), 1, 1 },
+	{ int(W.GetWidth() *.8f), int(W.GetHeight()*.2f), 1, 1 },
 	{ 50, 200,0 });
 	GUI::DrawTextSolid<FontID::FACTORY>(std::to_string(snakegrid.currentScore()),
-	{ int(W.GetWidth() *.85f), int(W.GetHeight()*.35f), 1, 1 },
+	{ int(W.GetWidth() *.85f), int(W.GetHeight()*.3f), 1, 1 },
+	{ 50, 200,0 });
+	GUI::DrawTextSolid<FontID::ARIAL>("Lives: "+ std::to_string(snakegrid.currentLives()),
+	{ int(W.GetWidth() *.8f), int(W.GetHeight()*.48f), 1, 1 },
 	{ 50, 200,0 });
 	GUI::DrawTextSolid<FontID::ARIAL>("Time:",
-	{ int(W.GetWidth() *.8f), int(W.GetHeight()*.66f), 1, 1 },
-	{ 250, 50,0 });
+	{ int(W.GetWidth() *.79f), int(W.GetHeight()*.66f), 1, 1 },
+	{ 50, 200,0 });
 
 	timeBar.Draw();
 

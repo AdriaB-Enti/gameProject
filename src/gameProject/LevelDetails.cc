@@ -14,7 +14,6 @@ void levelDetails::startGame()
 
 void levelDetails::resetLevel()
 {
-	// es reinicia el contador de la score? torna a com estava al principi d'aquell nivell?
 	food = 1;
 	time = 0;
 	lives--;
@@ -50,7 +49,6 @@ bool levelDetails::isLevelCompleted()
 void levelDetails::appleEaten()
 {
 	score += food * 100;
-	//snakeVel += score / 1000;	//updateTime
 	food++;
 }
 
