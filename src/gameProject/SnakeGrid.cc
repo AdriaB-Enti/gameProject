@@ -42,6 +42,7 @@ void SnakeGrid::start(std::string difStr) {					//start game for the first time
 
 void SnakeGrid::Update()
 {
+	lvlDetails.updateTimer();
 	detectKeyboard();
 	snakeTimer += TM.GetDeltaTime();
 	if (snakeTimer > timeToUpdate)
@@ -58,41 +59,21 @@ void SnakeGrid::Update()
 					placeApple();
 					snake.growUp();
 				}
-				gridCells[snake.getHead().x][snake.getHead().y].objectID = ObjectID::SNAKE_BODY;
-				snake.Update();
-				gridCells[snake.getHead().x][snake.getHead().y].objectID = ObjectID::SNAKE_HEAD;
+			if (lvlDetails.isLevelCompleted() || lvlDetails.isTimeOver()) {
+				resetGrid();
+				if(lvlDetails.isLevelCompleted())
+					lvlDetails.nextLevel();
 
-				switch (snake.getDirection())
-				{
-				case Snake::directions::down:
-					gridCells[snake.getHead().x][snake.getHead().y].angle = 180;
-					break;
-				case Snake::directions::up:
-					break;
-				case Snake::directions::left:
-					gridCells[snake.getHead().x][snake.getHead().y].angle = 270;
-					break;
-				case Snake::directions::right:
-					gridCells[snake.getHead().x][snake.getHead().y].angle = 90;
-					break;
-				default:
-					break;
-				}
-
-				gridCells[snake.getTail().x][snake.getTail().y].objectID = ObjectID::SNAKE_TAIL;
-				if (snake.hasMoved()) {						//if snake has moved the tail, clear tail cell
-					gridCells[snake.prevTail().x][snake.prevTail().y].objectID = ObjectID::EMPTY_SNAKE;
-					gridCells[snake.prevTail().x][snake.prevTail().y].angle = 0;
-				}
-			
+			}
+			else {					//update snake's position in grid if everything was ok
+				updateGrid();
+			}
+				
 		}
-		else {			//snake has crashed with a wall
+		else {						//snake has crashed with a wall
 			lvlDetails.resetLevel();
 			resetGrid();
 		}
-
-		//COMPROVAR QUE TINGUEM VIDES? (o fer-ho des de la snakeScene)
-		//Comprovar que queda temps?
 	}
 }
 
@@ -124,7 +105,6 @@ void SnakeGrid::resetGrid()
 	placeSnake();
 	placeApple();										//insert apple
 	snakeTimer = 0;
-	score = 0;
 	timeToUpdate = updateTime;
 }
 
@@ -160,7 +140,6 @@ void SnakeGrid::placeSnake()
 	gridCells[snake.getBody().x][snake.getBody().y].angle = 180;
 	gridCells[snake.getTail().x][snake.getTail().y].objectID = ObjectID::SNAKE_TAIL;
 	gridCells[snake.getTail().x][snake.getTail().y].angle = 180;
-
 }
 
 void SnakeGrid::detectKeyboard() {				//detect pressed keys and change snake's direction
@@ -172,5 +151,50 @@ void SnakeGrid::detectKeyboard() {				//detect pressed keys and change snake's d
 		snake.setDirection(Snake::directions::left);
 	if (IM.IsKeyDown<'d'>())
 		snake.setDirection(Snake::directions::right);
+}
+
+bool SnakeGrid::gameEnded()
+{
+	return lvlDetails.isGameOver();
+}
+
+int SnakeGrid::currentScore()
+{
+	return lvlDetails.getScore();
+}
+
+int SnakeGrid::timeLeft()
+{
+	return int((lvlDetails.getInitTimeToComplete()-lvlDetails.getTime())/1000);
+}
+
+void SnakeGrid::updateGrid()
+{
+	gridCells[snake.getHead().x][snake.getHead().y].objectID = ObjectID::SNAKE_BODY;
+	snake.Update();
+	gridCells[snake.getHead().x][snake.getHead().y].objectID = ObjectID::SNAKE_HEAD;
+
+	switch (snake.getDirection())
+	{
+	case Snake::directions::down:
+		gridCells[snake.getHead().x][snake.getHead().y].angle = 180;
+		break;
+	case Snake::directions::up:
+		break;
+	case Snake::directions::left:
+		gridCells[snake.getHead().x][snake.getHead().y].angle = 270;
+		break;
+	case Snake::directions::right:
+		gridCells[snake.getHead().x][snake.getHead().y].angle = 90;
+		break;
+	default:
+		break;
+	}
+
+	gridCells[snake.getTail().x][snake.getTail().y].objectID = ObjectID::SNAKE_TAIL;
+	if (snake.hasMoved()) {						//if snake has moved the tail, clear tail cell
+		gridCells[snake.prevTail().x][snake.prevTail().y].objectID = ObjectID::EMPTY_SNAKE;
+		gridCells[snake.prevTail().x][snake.prevTail().y].angle = 0;
+	}
 }
 

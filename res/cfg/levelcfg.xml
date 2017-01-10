@@ -2,21 +2,21 @@
 <levels>
 	<difficulty mode="Easy">
 		<cellMult>33</cellMult>
-		<timeMult>60</timeMult>
+		<timeMult>60000</timeMult>
 		<snakeMult>1</snakeMult>
 		<foodMult>3</foodMult>
 		<foodIncrem>1</foodIncrem>
 	</difficulty>
 	<difficulty mode="Medium">
 		<cellMult>22</cellMult>
-		<timeMult>45</timeMult>
+		<timeMult>45000</timeMult>
 		<snakeMult>2</snakeMult>
 		<foodMult>5</foodMult>
 		<foodIncrem>2</foodIncrem>
 	</difficulty>
 	<difficulty mode="Hard">
 		<cellMult>11</cellMult>
-		<timeMult>30</timeMult>
+		<timeMult>3000</timeMult>
 		<snakeMult>3</snakeMult>
 		<foodMult>7</foodMult>
 		<foodIncrem>4</foodIncrem>

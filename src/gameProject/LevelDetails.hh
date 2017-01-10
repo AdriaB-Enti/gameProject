@@ -14,9 +14,11 @@ public:
 
 	inline int getlives() { return lives; };
 	inline int getScore() { return score; };
+	inline float getTime() { return time; };
 
 	bool isTimeOver();				//check if available time has run out
 	bool isGameOver();
+	bool isLevelCompleted();
 	void appleEaten();
 	void updateTimer();
 

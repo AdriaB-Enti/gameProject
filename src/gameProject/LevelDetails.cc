@@ -1,6 +1,6 @@
 #include "LevelDetails.hh"
 #include "TimeManager.hh"
-
+#include <iostream>
 
 void levelDetails::startGame()
 {
@@ -25,6 +25,7 @@ void levelDetails::nextLevel()
 	food = 1;
 	time = 0;
 	level++;
+	std::cout << "level " << level << "\n";
 }
 
 bool levelDetails::isTimeOver()
@@ -38,6 +39,11 @@ bool levelDetails::isGameOver()
 		return true;
 	}
 	return false;
+}
+
+bool levelDetails::isLevelCompleted()
+{
+	return food > (getInitFood()+foodIncrease()*level);
 }
 
 

@@ -2,7 +2,6 @@
 #include "SnakeScene.hh"
 #include "MenuScene.hh"
 #include "SceneManager.hh"
-//#include "IOManager.hh"
 
 difficulty SnakeScene::selectedDif = difficulty::easy;
 
@@ -42,11 +41,23 @@ void SnakeScene::Update(void)
 	if (IM.IsKeyDown<KEY_BUTTON_ESCAPE>()) {	//when pressing scape, we go back to the menu
 		SM.SetCurScene<MenuScene>();
 	}
+
+	if (snakegrid.gameEnded())					//if game ends, go to Menu scene
+	{
+		SM.SetCurScene<MenuScene>();
+	}
 }
 
 void SnakeScene::Draw(void)
 {
 	snakegrid.Draw();
+	GUI::DrawTextSolid<FontID::FACTORY>(std::to_string(snakegrid.currentScore()),
+	{ int(W.GetWidth() *.85f), int(W.GetHeight()*.1f), 1, 1 },
+	{ 50, 200,0 });
+	
+	GUI::DrawTextSolid<FontID::FACTORY>(std::to_string(snakegrid.timeLeft()),
+	{ int(W.GetWidth() *.85f), int(W.GetHeight()*.5f), 1, 1 },
+	{ 250, 50,0 });
 }
 
 void SnakeScene::setDifficulty(const difficulty d)

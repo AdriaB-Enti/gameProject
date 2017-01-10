@@ -13,15 +13,6 @@ using namespace Logger;
 
 namespace IOManager {
 	
-	struct xmlParameters	//BORRAR
-	{
-		int cells;
-		int timeToComplete;
-		int snakeVel;
-		int initFood;
-		int foodIncrease;
-	};
-
 	levelDetails loadxml(std::string difficulty) {
 		//loads the correct game difficulty configuration
 		levelDetails details = levelDetails();
