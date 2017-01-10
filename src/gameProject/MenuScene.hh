@@ -1,9 +1,8 @@
 
 #pragma once
-
-#include "Grid.hh"
 #include "Scene.hh"
 #include "Button.h"
+#include "Sprite.hh"
 
 class  MenuScene : public Scene
 {

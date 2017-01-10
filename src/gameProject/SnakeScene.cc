@@ -2,6 +2,7 @@
 #include "SnakeScene.hh"
 #include "MenuScene.hh"
 #include "SceneManager.hh"
+#include "InputManager.hh"
 
 #define timeBarWidth 200
 

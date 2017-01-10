@@ -26,12 +26,6 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GameScene.cc">
-      <Filter>Source Files\Model</Filter>
-    </ClCompile>
-    <ClCompile Include="Grid.cc">
-      <Filter>Source Files\Model</Filter>
-    </ClCompile>
     <ClCompile Include="MenuScene.cc">
       <Filter>Source Files\Model</Filter>
     </ClCompile>
@@ -65,12 +59,6 @@
       <Filter>Source Files\Utils</Filter>
     </ClInclude>
     <ClInclude Include="Color.hh">
-      <Filter>Source Files\Model</Filter>
-    </ClInclude>
-    <ClInclude Include="GameScene.hh">
-      <Filter>Source Files\Model</Filter>
-    </ClInclude>
-    <ClInclude Include="Grid.hh">
       <Filter>Source Files\Model</Filter>
     </ClInclude>
     <ClInclude Include="GUI.hh">

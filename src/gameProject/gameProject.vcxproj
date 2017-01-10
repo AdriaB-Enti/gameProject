@@ -114,8 +114,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="GameScene.cc" />
-    <ClCompile Include="Grid.cc" />
     <ClCompile Include="LevelDetails.cc" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MenuScene.cc" />
@@ -128,8 +126,6 @@
     <ClInclude Include="Button.h" />
     <ClInclude Include="Color.hh" />
     <ClInclude Include="GameEngine.hh" />
-    <ClInclude Include="GameScene.hh" />
-    <ClInclude Include="Grid.hh" />
     <ClInclude Include="GUI.hh" />
     <ClInclude Include="ID.hh" />
     <ClInclude Include="InputManager.hh" />

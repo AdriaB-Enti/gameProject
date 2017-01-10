@@ -3,6 +3,7 @@
 #include "GUI.hh"
 #include "SceneManager.hh"
 #include "SnakeScene.hh"
+#include "InputManager.hh"
 
 MenuScene::MenuScene(void)
 {
