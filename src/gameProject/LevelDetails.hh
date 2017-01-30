@@ -1,5 +1,8 @@
 #pragma once
-
+/*
+This class will be used to store all parameters needed in every level and has all the functionalty necessary
+It's the class used to store level configuration readen from the xml
+*/
 class levelDetails
 {
 public:

@@ -5,6 +5,9 @@
 #include "Score.hh"
 #include "IOManager.hh"
 
+/*
+Scene to show all highscores
+*/
 class  RankingScene : public Scene
 {
 public:
@@ -15,14 +18,10 @@ public:
 	void Update(void) override;
 	void Draw(void) override;
 	static int scoreToSave;
-
-	void setInitButtons();
-	void setDifButtons();
 private:
 	bool askingName;			//whether we are selecting the difficulty or not
 	std::string playerName;
 	Button menu, exit;
 	std::list<Score> scoreList;
-	void drawScores();
 };
 

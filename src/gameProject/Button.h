@@ -11,7 +11,7 @@ struct Button
 	char* text="";
 	bool isActive = true;
 
-	void init(char* newText, Transform newTransform) {
+	void init(char* newText, Transform newTransform) {								//void method to initialize a button
 		text = newText;
 		transform = newTransform;
 		TTF_SizeText(R.GetFont<FontID::CANDY>(), text, &width, &height);			//calculate button size (won't work well if scale isn't 1-1)

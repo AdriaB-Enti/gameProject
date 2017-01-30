@@ -33,7 +33,7 @@ namespace IOManager {
 		return details;
 	}
 
-	/* Reads all scores stored in a binary file saves them in the list
+	/* Reads all scores stored in a binary file, saves them in the list
 	*/
 	void readScores(std::list<Score> &scoreList) {
 		scoreList.clear();
@@ -48,7 +48,6 @@ namespace IOManager {
 				if (score.name.length() >0)															//if we haven't reached the end (end of file will give 0 characters)
 				{
 					freading.read(reinterpret_cast<char*>(&score.points), sizeof(score.points));	//Read score (int)
-					//std::cout << "Player: { " << score.name << ", " << score.points << " }" << std::endl;
 					scoreList.push_front(score);
 				}
 			}
@@ -58,7 +57,7 @@ namespace IOManager {
 		}
 		else
 		{
-			std::cout << "Error reading file" << freading.bad() << "\n";
+			std::cout << "Error reading file" << "\n";
 
 		}
 	}
@@ -68,23 +67,6 @@ namespace IOManager {
 	void saveScores(std::list<Score> &scoreList) {
 
 		std::ofstream fwriting("../../res/cfg/highScores.bin", std::ios::binary);
-
-		/*Score scor1;
-		scor1.name = "adria";
-		scor1.points = 80;
-		Score scor2;
-		scor2.name = "sergi";
-		scor2.points = 70;
-		Score scor3;
-		scor3.name = "noob";
-		scor3.points = 50;
-		Score scor4;
-		scor4.name = "theboss";
-		scor4.points = 200;
-		scoreList.push_front(scor1);
-		scoreList.push_front(scor3);
-		scoreList.push_front(scor2);
-		scoreList.push_front(scor4);*/
 
 		if (fwriting.good()) {																				//if there are no errors
 			for (auto iterator = scoreList.begin(); iterator != scoreList.end(); iterator++)				//iterate scores list
@@ -97,7 +79,7 @@ namespace IOManager {
 		}
 		else
 		{
-			std::cout << "Error writing file" << fwriting.bad() << "\n";
+			std::cout << "Error writing file" << "\n";
 		}
 		
 	}

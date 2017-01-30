@@ -11,8 +11,8 @@ int RankingScene::scoreToSave = 0;
 RankingScene::RankingScene(void)
 {
 	askingName = true;
-	menu.init("Return to menu", { int(W.GetWidth()*.2f), int(W.GetHeight()*.84f), 1, 1 });
-	exit.init("Exit game", { int(W.GetWidth()*.8f), int(W.GetHeight()*.84f), 1, 1 });
+	menu.init("Return to menu", { int(W.GetWidth()*.2f), int(W.GetHeight()*.93f), 1, 1 });
+	exit.init("Exit game", { int(W.GetWidth()*.8f), int(W.GetHeight()*.93f), 1, 1 });
 }
 
 RankingScene::~RankingScene()
@@ -23,11 +23,9 @@ void RankingScene::OnEntry(void)
 {
 	playerName = "";
 	askingName = true;
-	setInitButtons();
 	
-	std::cout << "score is " << scoreToSave << std::endl;	//BORRAR
-
-	IOManager::readScores(scoreList);
+	std::cout << "Final score is: " << scoreToSave << std::endl;
+	IOManager::readScores(scoreList);								//read scores when ranking scene is going to show
 }
 
 void RankingScene::OnExit(void)
@@ -40,7 +38,7 @@ void RankingScene::Update(void)
 	if (askingName)
 	{
 		if (IM.IsKeyDown<KEY_BUTTON_BACKSPACE>() && playerName.length() > 0) {
-			playerName.pop_back();
+			playerName.pop_back();							//backspace deletes last character
 		}
 
 		if (IM.IsKeyDown<KEY_BUTTON_ENTER>()) {				//submit score
@@ -92,38 +90,23 @@ void RankingScene::Update(void)
 
 void RankingScene::Draw(void)
 {
-	drawScores();
-
-	GUI::DrawTextSolid<FontID::ARIAL>(askingName ? "Enter your name: " + playerName : "Scores updated!",
-	{ W.GetWidth()>>1, int(W.GetHeight()*.74f), 1, 1 },
+	GUI::DrawTextSolid<FontID::FACTORY>("HIGHSCORES",
+	{ W.GetWidth() >> 1, int(W.GetHeight()*.07f), 1, 1 },
 	{ 50, 200,0 });
 
-	menu.Draw();
-	exit.Draw();
-}
-
-//only "Play" and "Exit" buttons are visible
-void RankingScene::setInitButtons()
-{
-	menu.isActive = true;
-	exit.isActive = true;
-}
-
-//only "Easy", "Medium" and "Hard" buttons are visible
-void RankingScene::setDifButtons()
-{
-	menu.isActive = false;
-	exit.isActive = false;
-}
-
-void RankingScene::drawScores()
-{
-	float newPosition = 0.06f;
-	for (auto it = scoreList.rbegin(); it != scoreList.rend(); it++)				//iterate the list backwards, we want to show higher scores first, then the lower ones
+	float newPosition = 0.15f;														//starting position for drawing the scores
+	for (auto it = scoreList.rbegin(); it != scoreList.rend(); it++)				//iterate the list backwards, we want to show higher scores first (list.sort() oders from smaller to bigger)
 	{
-		GUI::DrawTextSolid<FontID::ARIAL>(it->name+" "+ std::to_string(it->points),
+		GUI::DrawTextSolid<FontID::ARIAL>(it->name + " " + std::to_string(it->points),
 		{ W.GetWidth() >> 1, int(W.GetHeight()*newPosition), 1, 1 },
 		{ 50, 200,0 });
 		newPosition += .06f;
 	}
+
+	GUI::DrawTextSolid<FontID::ARIAL>(askingName ? "Enter your name: " + playerName : "Scores updated!",
+	{ W.GetWidth()>>1, int(W.GetHeight()*.83f), 1, 1 },
+	{ 239, 255, 71 });
+
+	menu.Draw();
+	exit.Draw();
 }
