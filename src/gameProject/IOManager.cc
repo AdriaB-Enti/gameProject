@@ -1,5 +1,6 @@
 #pragma once
 #include "IOManager.hh"
+#include <string>
 #include <fstream>
 #include <ostream>
 #include <XML/rapidxml_utils.hpp>
@@ -7,8 +8,7 @@
 
 namespace IOManager {
 
-	levelDetails loadxml(std::string difficulty) {
-		//loads the correct game difficulty configuration
+	levelDetails loadxml(std::string difficulty) {								//loads the correct game difficulty from the xml file configuration
 		levelDetails details = levelDetails();
 
 		rapidxml::file<> xmlFile("../../res/cfg/levelcfg.xml");
@@ -33,45 +33,25 @@ namespace IOManager {
 		return details;
 	}
 
-
+	/* Reads all scores stored in a binary file saves them in the list
+	*/
 	void readScores(std::list<Score> &scoreList) {
 		scoreList.clear();
 
-		std::ifstream freading("../../res/cfg/highScores.dat", std::ios::binary);
+		std::ifstream freading("../../res/cfg/highScores.bin", std::ios::binary);
 
 		if (freading.good())
 		{
+			Score score;
 			while (!freading.eof()) {
-				Score score;
-				std::getline(freading, score.name, '\0');
-				freading.read(reinterpret_cast<char *>(&score.points), sizeof(score.points));
-				//score.name.pop_back();
-				std::cout << score.name << "\n";
-				std::cout << score.name.length() << "\n";
-				std::cout << score.points << "\n";
-				if (score.name.length() != 0)
+				std::getline(freading, score.name, '\0');											//read player name (ending in null character)
+				if (score.name.length() >0)															//if we haven't reached the end (end of file will give 0 characters)
 				{
+					freading.read(reinterpret_cast<char*>(&score.points), sizeof(score.points));	//Read score (int)
+					//std::cout << "Player: { " << score.name << ", " << score.points << " }" << std::endl;
 					scoreList.push_front(score);
 				}
 			}
-
-			//Score scor1;
-			//scor1.name = "adriaaaaaa";
-			//scor1.points = 50;
-			//Score scor2;
-			//scor2.name = "sergi";
-			//scor2.points = 40;
-			////std::cout << "cert? " << (scor2 < scor1) << std::endl;
-			//Score scor3;
-			//scor3.name = "lopes";
-			//scor3.points = 200;
-			//Score scor4;
-			//scor4.name = "b";
-			//scor4.points = 400;
-			//scoreList.push_front(scor1);
-			//scoreList.push_front(scor3);
-			//scoreList.push_front(scor2);
-			//scoreList.push_front(scor4);
 
 			scoreList.sort();
 			freading.close();
@@ -83,20 +63,35 @@ namespace IOManager {
 		}
 	}
 
+	/* Saves all scores from the list into a binary file
+	*/
 	void saveScores(std::list<Score> &scoreList) {
 
-		std::ofstream fwriting("../../res/cfg/highScores.dat", std::ios::binary);
-		std::cout << "ESCRIBINT\n";
+		std::ofstream fwriting("../../res/cfg/highScores.bin", std::ios::binary);
 
-		if (fwriting.good()) {
-			for (auto iterator = scoreList.begin(); iterator != scoreList.end(); iterator++)
+		/*Score scor1;
+		scor1.name = "adria";
+		scor1.points = 80;
+		Score scor2;
+		scor2.name = "sergi";
+		scor2.points = 70;
+		Score scor3;
+		scor3.name = "noob";
+		scor3.points = 50;
+		Score scor4;
+		scor4.name = "theboss";
+		scor4.points = 200;
+		scoreList.push_front(scor1);
+		scoreList.push_front(scor3);
+		scoreList.push_front(scor2);
+		scoreList.push_front(scor4);*/
+
+		if (fwriting.good()) {																				//if there are no errors
+			for (auto iterator = scoreList.begin(); iterator != scoreList.end(); iterator++)				//iterate scores list
 			{
-				std::cout << "una score\n";
-				fwriting.write(iterator->name.c_str(), sizeof(iterator->name.c_str()));							//write player name				fwriting.write("\0", sizeof(char));
-				int ponts = 500;
-				fwriting.write(reinterpret_cast<char *>(&ponts), sizeof(ponts));	//write score
-				//fwriting.write(reinterpret_cast<char *>(&(iterator->points)), sizeof(iterator->points));	//write score
-
+				fwriting.write(iterator->name.c_str(), iterator->name.size());								//Write player name in binary
+				fwriting.write("\0", sizeof(char));															//Add null character (to simplify reading)
+				fwriting.write(reinterpret_cast<char*>(&iterator->points), sizeof(iterator->points));		//Write score in binary
 			}
 			fwriting.close();
 		}
@@ -106,5 +101,4 @@ namespace IOManager {
 		}
 		
 	}
-
 }

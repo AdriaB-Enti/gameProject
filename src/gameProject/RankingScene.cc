@@ -28,7 +28,6 @@ void RankingScene::OnEntry(void)
 	std::cout << "score is " << scoreToSave << std::endl;	//BORRAR
 
 	IOManager::readScores(scoreList);
-	//IOManager::saveScores(scoreList);
 }
 
 void RankingScene::OnExit(void)
@@ -47,7 +46,7 @@ void RankingScene::Update(void)
 		if (IM.IsKeyDown<KEY_BUTTON_ENTER>()) {				//submit score
 			if (playerName.length() > 0)
 			{
-				Score newScore;
+				Score newScore;								//create new score and store new information in it
 				newScore.name = playerName;
 				newScore.points = scoreToSave;
 				scoreList.push_back(newScore);
@@ -55,9 +54,9 @@ void RankingScene::Update(void)
 
 				if (scoreList.size() > 10)
 				{
-					scoreList.pop_front();					//if there are more than 10 scores, delete the smallest
+					scoreList.pop_front();					//if there are more than 10 scores, delete the smallest (front is always the smallest)
 				}
-				//IOManager::saveScores(scoreList);			//save File
+				IOManager::saveScores(scoreList);			//save File
 				askingName = false;
 			}
 			else
