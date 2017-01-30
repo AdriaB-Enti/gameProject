@@ -1,3 +1,4 @@
+#pragma once
 #include "LevelDetails.hh"
 #include "TimeManager.hh"
 #include <iostream>

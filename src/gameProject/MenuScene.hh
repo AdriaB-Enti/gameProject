@@ -17,6 +17,7 @@ public:
 	void setInitButtons();
 	void setDifButtons();
 private:
+	bool selectingDif;			//wheter we are selecting the difficulty or not
 	Button play, exit;
 	Button easy, medium, hard;
 	Sprite m_background;

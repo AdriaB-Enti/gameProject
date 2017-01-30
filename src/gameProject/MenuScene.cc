@@ -7,9 +7,10 @@
 
 MenuScene::MenuScene(void)
 {
+	selectingDif = false;
 	m_background = { { 0, 0, W.GetWidth(), W.GetHeight() }, ObjectID::BG_01, 0};
-	play.init("Play", { W.GetWidth() >> 1, int(W.GetHeight()*.1f), 1, 1 });
-	exit.init("Exit", { W.GetWidth() >> 1, int(W.GetHeight()*.8f), 1, 1 });
+	play.init("Play", { W.GetWidth() >> 1, int(W.GetHeight()*.15f), 1, 1 });
+	exit.init("Exit", { W.GetWidth() >> 1, int(W.GetHeight()*.75f), 1, 1 });
 
 	easy.init("Easy", { W.GetWidth()/8, W.GetHeight()>>1, 1, 1 });
 	medium.init("Medium", { 4*W.GetWidth()/8, W.GetHeight()>>1, 1, 1 });
@@ -22,6 +23,7 @@ MenuScene::~MenuScene()
 
 void MenuScene::OnEntry(void)
 {
+	selectingDif = false;
 	setInitButtons();
 }
 
@@ -58,7 +60,14 @@ void MenuScene::Update(void)
 		}
 	}
 	if (IM.IsKeyDown<KEY_BUTTON_ESCAPE>()) {	//when pressing scape, Play and exit are shown
-		setInitButtons();
+		if (!selectingDif)
+		{
+			std::cout << "Exit" << std::endl;
+			SetState<SceneState::EXIT>();
+		}
+		else {
+			setInitButtons();
+		}
 	}
 }
 
@@ -78,6 +87,7 @@ void MenuScene::Draw(void)
 //only "Play" and "Exit" buttons are visible
 void MenuScene::setInitButtons()
 {
+	selectingDif = false;
 	play.isActive = true;
 	exit.isActive = true;
 	easy.isActive = false;
@@ -88,6 +98,7 @@ void MenuScene::setInitButtons()
 //only "Easy", "Medium" and "Hard" buttons are visible
 void MenuScene::setDifButtons()
 {
+	selectingDif = true;
 	play.isActive = false;
 	exit.isActive = false;
 	easy.isActive = true;

@@ -6,7 +6,6 @@
 #include "TimeManager.hh"
 #include "SnakeScene.hh"
 #include "IOManager.hh"
-#include "LevelDetails.hh"
 
 #define updateTime 200
 #define initLives 3

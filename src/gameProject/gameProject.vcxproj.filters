@@ -41,6 +41,12 @@
     <ClCompile Include="LevelDetails.cc">
       <Filter>Source Files\Model</Filter>
     </ClCompile>
+    <ClCompile Include="RankingScene.cc">
+      <Filter>Source Files\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="IOManager.cc">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Button.h">
@@ -115,5 +121,14 @@
     <ClInclude Include="LevelDetails.hh">
       <Filter>Source Files\Model</Filter>
     </ClInclude>
+    <ClInclude Include="RankingScene.hh">
+      <Filter>Source Files\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Score.hh">
+      <Filter>Source Files\Model</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>

@@ -114,9 +114,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="IOManager.cc" />
     <ClCompile Include="LevelDetails.cc" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MenuScene.cc" />
+    <ClCompile Include="RankingScene.cc" />
     <ClCompile Include="Snake.cc" />
     <ClCompile Include="SnakeGrid.cc" />
     <ClCompile Include="SnakeScene.cc" />
@@ -134,10 +136,12 @@
     <ClInclude Include="Logger.hh" />
     <ClInclude Include="main.h" />
     <ClInclude Include="MenuScene.hh" />
+    <ClInclude Include="RankingScene.hh" />
     <ClInclude Include="Renderer.hh" />
     <ClInclude Include="Resource.hh" />
     <ClInclude Include="Scene.hh" />
     <ClInclude Include="SceneManager.hh" />
+    <ClInclude Include="Score.hh" />
     <ClInclude Include="Snake.hh" />
     <ClInclude Include="SnakeGrid.hh" />
     <ClInclude Include="SnakeScene.hh" />
@@ -146,6 +150,9 @@
     <ClInclude Include="TimeManager.hh" />
     <ClInclude Include="Transform.hh" />
     <ClInclude Include="Window.hh" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

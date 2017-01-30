@@ -1,6 +1,7 @@
 #pragma once
 #include "SnakeScene.hh"
 #include "MenuScene.hh"
+#include "RankingScene.hh"
 #include "SceneManager.hh"
 #include "InputManager.hh"
 
@@ -42,12 +43,13 @@ void SnakeScene::Update(void)
 {
 	snakegrid.Update();
 
-	if (IM.IsKeyDown<KEY_BUTTON_ESCAPE>()) {	//when pressing scape, we go back to the menu
+	if (IM.IsKeyDown<KEY_BUTTON_ESCAPE>()) {						//when pressing scape, we go back to the menu
 		SM.SetCurScene<MenuScene>();
 	}
-	if (snakegrid.gameEnded())					//if game ends, go to Menu scene
+	if (snakegrid.gameEnded())										//if game ends, go to ranking scene and send score
 	{
-		SM.SetCurScene<MenuScene>();
+		RankingScene::scoreToSave = snakegrid.currentScore();	
+		SM.SetCurScene<RankingScene>();
 	}
 
 	timeBar.transform.w = int(timeBarWidth * snakegrid.timeLeft());	//update the time bar lenght 

@@ -5,6 +5,7 @@
 #pragma region GAME_SCENES
 #include "MenuScene.hh"
 #include "SnakeScene.hh"
+#include "RankingScene.hh"
 #pragma endregion TODO
 
 
@@ -29,6 +30,7 @@ namespace GameEngine {
 	void AddScenes(void) {
 		SM.AddScene<MenuScene>();
 		SM.AddScene<SnakeScene>();
+		SM.AddScene<RankingScene>();
 		SM.SetCurScene<MenuScene>();
 
 	}

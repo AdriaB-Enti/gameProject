@@ -140,6 +140,25 @@ public:
 	template<Sint32 key> bool IsKeyUp(void) {
 		return CheckInput<key, InputValue::UP>();
 	}
+
+	/**
+	* Checks from 'a' to 'z' and returns the first key found in "DOWN" state. Returns NULL if nothing is found
+	*/
+	Sint32 whatKeyIsDown() {
+		Sint32 key = 'a';
+		while (key <= 'z')
+		{
+			auto it = m_inputMap.find(key); // Check for the id inside the dictionary
+			if (it != m_inputMap.end())
+			{
+				if (it->second == InputValue::DOWN)
+					return key;
+			}
+			key++;
+		}
+		return NULL;
+	}
+
 private:
 	/**
 	* Defines each state of the input event stored (DOWN -> HOLD | UP -> EMPTY).

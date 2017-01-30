@@ -21,8 +21,4 @@
 		<foodMult>7</foodMult>
 		<foodIncrem>4</foodIncrem>
 	</difficulty>
-   <level numb="1">
-	<k>3</k>
-	<x>5</x>
-   </level>
 </levels>
